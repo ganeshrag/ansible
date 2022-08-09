@@ -1,0 +1,8 @@
+[web]
+managed-host1
+managed-host2
+[db]
+managed-host3
+[production:children]
+web
+db
