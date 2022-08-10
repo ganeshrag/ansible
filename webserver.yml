@@ -1,0 +1,19 @@
+---
+- name: Configure web server
+  hosts: web
+  remote_user: ec2-user
+  become: true
+  tasks:
+        - name: install the latest version of Apache
+          yum:
+                name: httpd
+                state: latest
+
+        - name: Create a Sample index.hml page and place under /var/www/html
+          copy:
+                content: 'Sample hello world page'
+                dest: /var/www/html/index.html
+        - name: Restart html service
+          service:
+                name: httpd
+                state: restarted
